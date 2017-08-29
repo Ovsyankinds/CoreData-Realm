@@ -13,6 +13,7 @@
 		158BB0A21F55755900A1926B /* CoreData_Realm.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 158BB0A01F55755900A1926B /* CoreData_Realm.xcdatamodeld */; };
 		158BB0A41F55755900A1926B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 158BB0A31F55755900A1926B /* Assets.xcassets */; };
 		158BB0A71F55755900A1926B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 158BB0A51F55755900A1926B /* LaunchScreen.storyboard */; };
+		158BB0B01F557F0700A1926B /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 158BB0AE1F557F0700A1926B /* Model.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		158BB0A31F55755900A1926B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		158BB0A61F55755900A1926B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		158BB0A81F55755900A1926B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		158BB0AF1F557F0700A1926B /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			children = (
 				158BB0991F55755900A1926B /* AppDelegate.swift */,
 				158BB09B1F55755900A1926B /* ViewController.swift */,
+				158BB0AE1F557F0700A1926B /* Model.xcdatamodeld */,
 				158BB09D1F55755900A1926B /* Main.storyboard */,
 				158BB0A31F55755900A1926B /* Assets.xcassets */,
 				158BB0A51F55755900A1926B /* LaunchScreen.storyboard */,
@@ -142,6 +145,7 @@
 				158BB0A21F55755900A1926B /* CoreData_Realm.xcdatamodeld in Sources */,
 				158BB09C1F55755900A1926B /* ViewController.swift in Sources */,
 				158BB09A1F55755900A1926B /* AppDelegate.swift in Sources */,
+				158BB0B01F557F0700A1926B /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,6 +309,7 @@
 				158BB0AD1F55755900A1926B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
@@ -316,6 +321,16 @@
 			);
 			currentVersion = 158BB0A11F55755900A1926B /* CoreData_Realm.xcdatamodel */;
 			path = CoreData_Realm.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		158BB0AE1F557F0700A1926B /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				158BB0AF1F557F0700A1926B /* Model.xcdatamodel */,
+			);
+			currentVersion = 158BB0AF1F557F0700A1926B /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
