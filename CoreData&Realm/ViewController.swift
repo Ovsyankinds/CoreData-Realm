@@ -9,15 +9,12 @@
 import UIKit
 import CoreData
 
-class ViewController: UIViewController, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var inputName: UITextField?
     @IBOutlet weak var inputSername: UITextField?
     @IBOutlet weak var inputAge: UITextField?
-    
-    @IBOutlet weak var name: UILabel?
-    @IBOutlet weak var sername: UILabel?
-    @IBOutlet weak var age: UILabel?
+    @IBOutlet weak var tableView: UITableView!
     
     var array = [Person]()
     
@@ -31,33 +28,33 @@ class ViewController: UIViewController, UITableViewDataSource {
         
         do{
             try self.object.save()
+            tableView.reloadData()
         } catch{
             print("Not load data")
         }
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return array.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        let person = array[indexPath.row]
-        cell.nameLabel!.text = person.name
-        cell.sernameLabel!.text = person.sername
-        cell.ageLabel!.text = person.sername
-    }
+    /*@IBAction func deleteIntoDatabas(){
+        object(UIApplication.shared.delegate as! AppDelegate)
+        object.delete()
+        do{
+            try self.managedObjectContext.save
+        }catch{}
+    }*/
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        /*tableView.delegate.self
+        tableView.DataSource.self*/
         object = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
         let request: NSFetchRequest<Person> = Person.fetchRequest()
-        tableView.reloadData()
+        //tableView.reloadData()
         
         do{
-            let array = try object.fetch(request)
+            array = try object.fetch(request)
+            tableView.reloadData()
+            //let result = try object.fetch(request)
             
             /*name?.text = array[0]
             sername?.text = array[1]
@@ -78,6 +75,46 @@ class ViewController: UIViewController, UITableViewDataSource {
         // Dispose of any resources that can be recreated.
     }
 
-
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return array.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MyTableViewCell
+        let person = array[indexPath.row]
+        cell.nameLabel!.text = person.name
+        cell.sernameLabel!.text = person.sername
+        cell.ageLabel!.text = String(person.age)
+        
+        return cell
+    }
+    
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        object = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
+        if editingStyle == .delete{
+            let user = array[indexPath.row]
+            object.delete(user)
+            (UIApplication.shared.delegate as! AppDelegate).saveContext()
+            
+            do{
+                try object.fetch(Person.fetchRequest())
+            }catch{}
+            
+        }
+        
+        tableView.reloadData()
+    }
+    
+    
+    
+    
 }
 
